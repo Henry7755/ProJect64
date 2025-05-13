@@ -1,0 +1,28 @@
+# ----- Electrocardiogram (ECG) -----
+# This file contains the metadata for the ECG signal preprocessing pipeline.
+
+Signal: 
+  - Name: ECG
+    Description: Electrocardiogram signal
+    Units: mV
+    Sampling_rate: 500
+    Channels:
+      - Lead I
+      - Lead II
+      - v3
+      - v4
+
+#   --- ECG filtering parameters ---
+#   These parameters are used for filtering the ECG signal to remove noise and artifacts.
+ecg_filter_config:
+  sampling_frequency: 500  # Hz
+  lowcut_frequency: 0.5   # Hz
+  highcut_frequency: 45   # Hz
+  filter_order: 4
+  powerline_interference_frequency: 50  # Hz
+  notch_filter_quality_factor: 30
+  baseline_wander_cutoff_frequency: 0.5 # Hz
+  baseline_wander_filter_order: 2
+  muscle_artifact_lowcut_frequency: 0.5 # Hz (redundant with lowcut_frequency, but explicit)
+  muscle_artifact_highcut_frequency: 45 # Hz (redundant with highcut_frequency, but explicit)
+  muscle_artifact_filter_order: 4 # Hz (redundant with filter_order, but explicit)
