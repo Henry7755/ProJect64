@@ -28,6 +28,10 @@ pipeline = Pipeline([
                                  highcut=50.0,
                                  fs=config["ecg_filter_config"]["sampling_frequency"],
                                  config_path=CONFIG_PATH ))
+    
+    #(Normalization()) 
+    # (Timestamp())
+    # (Resampling())
     # Add other transformations or models here as needed
 ])
 
