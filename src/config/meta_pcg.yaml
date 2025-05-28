@@ -1,0 +1,23 @@
+#    __--- Phonocardiogram (PCG) signal ---__
+#
+# This file contains the metadata for the PCG signal preprocessing pipeline.
+
+signal: 
+    Name: PCG
+    Description: Phonocardiogram signal
+    Units: mV
+    Sampling_rate: 1000
+    Channels:
+      - pcg
+
+#   __--- PCG filtering parameters ---__
+preprocessing: 
+   Normalization:
+     method: min-max
+     min_value: 0
+     max_value: 1
+   bandpass_filter:
+     filter_type: butter
+     lowcut: 20
+     highcut: 1000
+     order: 4

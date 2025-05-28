@@ -13,7 +13,7 @@ Signal:
       - v4
 
 #   --- ECG filtering parameters ---
-#   These parameters are used for filtering the ECG signal to remove noise and artifacts.
+
 ecg_filter_config:
   sampling_frequency: 500  # Hz
   lowcut_frequency: 0.5   # Hz

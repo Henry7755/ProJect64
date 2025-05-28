@@ -1,7 +1,11 @@
 import sys
+# import os
 from pathlib import Path
 from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import FunctionTransformer
+#sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 from  ecg__init__ import ECGfilter
+
 import pandas as pd
 
 
@@ -16,6 +20,7 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 CONFIG_PATH = BASE_DIR / 'config'/'meta_ecg.yaml'
 
 from utils.file_utils import load_yaml
+from utils import Normalize
 
 config = load_yaml(CONFIG_PATH)
 
@@ -23,7 +28,10 @@ config = load_yaml(CONFIG_PATH)
 
                                         
 # Create a pipeline with the ECGNoiseHandler class
-pipeline = Pipeline([
+pipeline = Pipeline([ ("Normalization", FunctionTransformer(Normalize.normalize_signal)),
+    # (Timestamp())
+    # (Resampling())
+    # Add other transformations or models here as needed
     ('noise_handler', ECGfilter( lowcut=0.5,
                                  highcut=50.0,
                                  fs=config["ecg_filter_config"]["sampling_frequency"],

@@ -29,6 +29,5 @@ for file_name in os.listdir(source_folder):
         shutil.move(source_file, destination_file)
         print(f"Moved: {file_name} to {destination_folder}")
 
-print("File moving process completed.")
 
 print("File moving process completed.")
