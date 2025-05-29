@@ -120,6 +120,7 @@ if __name__ == "__main__":
     signals_directory = r'C:\Users\abusu\Desktop\BME\ProJect64\ProJect64 System Architect\Data\Rel_Data'
 
     grouped_signal_data = group_signal_files_by_timestamp(signals_directory)
+    save_directory =r"C:\Users\abusu\Desktop\BME\ProJect64\ProJect64 System Architect\Data\Synched_Data"
 
     logging.info("--- Grouped Files Structure ---")
     for timestamp, files_dict in grouped_signal_data.items():
@@ -128,5 +129,5 @@ if __name__ == "__main__":
 
     logging.info("--- Starting Signal Processing ---")
     for timestamp, file_paths in sorted(grouped_signal_data.items()):
-        process_signals_for_timestamp(timestamp, file_paths)
+        process_signals_for_timestamp(timestamp, file_paths,save_directory)
     logging.info("--- Signal Processing Complete ---")
