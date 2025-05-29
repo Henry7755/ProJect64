@@ -39,36 +39,36 @@ def plot_signals(t_common, signals, labels):
     plt.show()
 
 # === Load all signals ===
-ecg_time, ecg_signal = load_signal(r"C:\Users\abusu\Desktop\BME\ProJect64\ProJect64 System Architect\Data\Rel_Data\1_10-09-54_ecg.csv", time_col=0, signal_col=1)
-pcg_time, pcg_signal = load_signal(r"C:\Users\abusu\Desktop\BME\ProJect64\ProJect64 System Architect\Data\Rel_Data\1_10-09-54_pcg.csv", time_col=0, signal_col=1)
-acc_time, acc_signal = load_signal(r"C:\Users\abusu\Desktop\BME\ProJect64\ProJect64 System Architect\Data\Rel_Data\1_10-09-54_acc.csv", time_col=0, signal_col=1)
+# ecg_time, ecg_signal = load_signal(r"C:\Users\abusu\Desktop\BME\ProJect64\ProJect64 System Architect\Data\Rel_Data\1_10-09-54_ecg.csv", time_col=0, signal_col=1)
+# pcg_time, pcg_signal = load_signal(r"C:\Users\abusu\Desktop\BME\ProJect64\ProJect64 System Architect\Data\Rel_Data\1_10-09-54_pcg.csv", time_col=0, signal_col=1)
+# acc_time, acc_signal = load_signal(r"C:\Users\abusu\Desktop\BME\ProJect64\ProJect64 System Architect\Data\Rel_Data\1_10-09-54_acc.csv", time_col=0, signal_col=1)
 
-# === Synchronize signals ===
-t_common, synced_signals = synchronize_signals([
-    (ecg_time, ecg_signal),
-    (pcg_time, pcg_signal),
-    (acc_time, acc_signal)
-], fs_common=1000)
+# # === Synchronize signals ===
+# t_common, synced_signals = synchronize_signals([
+#     (ecg_time, ecg_signal),
+#     (pcg_time, pcg_signal),
+#     (acc_time, acc_signal)
+# ], fs_common=1000)
 
-# === Plot results ===
-plot_signals(t_common, synced_signals, labels=['ECG (lead I)', 'PCG', 'Accelerometer Az'])
+# # === Plot results ===
+# plot_signals(t_common, synced_signals, labels=['ECG (lead I)', 'PCG', 'Accelerometer Az'])
 
 
 
-import os
+# import os
 
-# Stack signals into matrix (shape: [n_samples, n_signals])
-synced_matrix = np.vstack(synced_signals).T  # Transpose to get shape (samples, channels)
+# # Stack signals into matrix (shape: [n_samples, n_signals])
+# synced_matrix = np.vstack(synced_signals).T  # Transpose to get shape (samples, channels)
 
-# Create DataFrame with column names
-df = pd.DataFrame(synced_matrix, columns=['ECG_lead_I', 'PCG', 'ACC_Z'])
-df['Time'] = t_common
+# # Create DataFrame with column names
+# df = pd.DataFrame(synced_matrix, columns=['ECG_lead_I', 'PCG', 'ACC_Z'])
+# df['Time'] = t_common
 
-# Reorder columns so Time is first
-df = df[['Time', 'ECG_lead_I', 'PCG', 'ACC_Z']]
+# # Reorder columns so Time is first
+# df = df[['Time', 'ECG_lead_I', 'PCG', 'ACC_Z']]
 
-# Set save path (can modify as needed)
-save_path = r"C:\Users\abusu\Desktop\BME\ProJect64\ProJect64 System Architect\Data\Rel_Data\synced_signals.csv"
-df.to_csv(save_path, index=False)
+# # Set save path (can modify as needed)
+# save_path = r"C:\Users\abusu\Desktop\BME\ProJect64\ProJect64 System Architect\Data\Rel_Data\synced_signals.csv"
+# df.to_csv(save_path, index=False)
 
-print(f"Synchronized signals saved to:\n{save_path}")
+# print(f"Synchronized signals saved to:\n{save_path}")
