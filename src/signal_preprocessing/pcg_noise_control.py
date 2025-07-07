@@ -1,5 +1,4 @@
 from sklearn.base import BaseEstimator, TransformerMixin
-import numpy as np
 import scipy.signal as sig
 import yaml
 
@@ -23,29 +22,18 @@ class PCGfilter( BaseEstimator, TransformerMixin):
              print("Config path not provided.  Using default parameters.")
              self.config = {}
 
-    
-        
-   
     def bandpass(self, signal, filter_type='butter'):
         nyquist = 0.5 * self.fs
         low = self.lowcut / nyquist
         high = self.highcut / nyquist
-
-       
-
-       
         sos = sig.butter(self.order, [low, high], btype='bandpass', output='sos')
         return sig.sosfilt(sos, signal)
-       
-       
+   
     def fit(self, X, y=None):
         return self
     
-    
     def transform(self, X):
         Y = self.bandpass(signal = X, filter_type='butter')
-       
-    
         return Y
     
 
