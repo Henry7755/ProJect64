@@ -1,0 +1,11 @@
+preprocessing:
+  window_size: 5000
+  overlap: 0.5
+  normalize: zscore
+  signals: [ECG, PCG]
+  input_folder: "/home/psyche/Documents/ProJect64/ProJect64 System Architect/Data/Model_data/normal"
+  output_path:
+    - /home/psyche/Documents/ProJect64/ProJect64 System Architect/Data/Model_data/ecgModel1N_data
+    - /home/psyche/Documents/ProJect64/ProJect64 System Architect/Data/Model_data/pcgModel1N_data
+  save_numpy: true  
+

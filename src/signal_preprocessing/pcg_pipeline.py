@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer
-from  signal_preprocessing import PCGfilter
+from  src.signal_preprocessing import PCGfilter
 from signal_preprocessing.SignalQualityAssesment import UnifiedSignalSQA 
 import pandas as pd   
 
@@ -11,6 +11,7 @@ import pandas as pd
 # Add src/ to the system path
 sys.path.append(str(Path(__file__).resolve().parents[2]))  
 BASE_DIR = Path(__file__).resolve().parents[2]
+print(BASE_DIR)
 CONFIG_PATH = BASE_DIR / 'config'/'meta_pcg.yaml'
 
 from utils.file_utils import load_yaml

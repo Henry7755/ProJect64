@@ -32,10 +32,11 @@ class ECGfilter(BaseEstimator, TransformerMixin):
                 }
             }
 
-    def set_sqa_result(self, sqa_result):
+    def set_sqa_result(self, sqa_result:dict,sqa_mask=None):
         """Optional setter for injecting SQA analysis externally."""
         self.sqa_result = sqa_result
-
+        self.sqa_mask = sqa_mask    
+        
     @staticmethod
     def remove_baseline_wander(raw_signal, fs, cutoff=0.5, order=2):
         nyq = 0.5 * fs
@@ -61,7 +62,7 @@ class ECGfilter(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         return self
 
-    def transform(self, X):
+    def transform(self, X: np.ndarray) -> np.ndarray:
         """
         Apply filters based on SQA results.
         """

@@ -1,5 +1,17 @@
 import os
 import re
+import logging
+
+# Basic configuration
+logging.basicConfig(
+    level=logging.INFO,  # Set to DEBUG for more detail, WARNING for less
+    format='[%(asctime)s] %(levelname)s: %(message)s',
+    handlers=[
+        logging.StreamHandler(),                      # Console
+        logging.FileHandler("processing_log.txt")     # Log to a file
+    ]
+)
+
 
 def group_signal_files_by_timestamp(directory_path):
     """

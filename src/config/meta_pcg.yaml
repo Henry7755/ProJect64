@@ -6,7 +6,7 @@ signal:
     Name: PCG
     Description: Phonocardiogram signal
     Units: mV
-    Sampling_rate: 1000
+    Sampling_rate: 80
     Channels:
       - pcg
 
@@ -19,5 +19,5 @@ preprocessing:
    bandpass_filter:
      filter_type: butter
      lowcut: 20
-     highcut: 1000
+     highcut: 12
      order: 4
